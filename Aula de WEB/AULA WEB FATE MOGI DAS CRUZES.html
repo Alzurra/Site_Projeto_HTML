@@ -1,0 +1,167 @@
+<html>
+
+<head>
+    <title>FATEC - MOGI DAS CRUZES</title>
+    <meta charset="utf-8" />
+    <style>
+        #produtos,
+        #carrinho {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2%;
+            display: flex;
+        }
+
+        #carrinho {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2%;
+            display: block;
+        }
+
+        .produto-single {
+            max-width: 100%;
+
+
+        }
+
+        .produto-single {
+            text-decoration: none;
+            color: white;
+            background-color: #5fb382;
+            text-align: center;
+            display: block;
+            padding: 4px 0;
+            font-size: 18px;
+            /*width: 33.3%;
+                padding:0 20px;*/
+
+        }
+
+        .produto-single {
+            width: 32%;
+            margin-right: 1%;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .produto-single {
+            width: 32%;
+            margin-right: 1%;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .produto-single img {
+            max-width: 100%;
+        }
+
+        h2 {
+            background-color: #4c3282;
+            padding: 10px 0;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>FATEC MOGI DAS CRUZES - CURSOS TECNÓLOGOS</h2>
+
+    <h1> Por que estudar na Fatec Mogi das Cruzes?
+A Fatec Mogi das Cruzes é a instituição superior do Alto Tietê cujos cursos têm a melhor avaliação do MEC 
+- Ministério da Educação. 
+Os cursos já avaliados, Agronegócio, Análise e Desenvolvimento de Sistemas e Recursos-Humanos, 
+receberam conceito Ótimo ou Excelente no ENADE.</h1>
+
+    <h2>IMAGENS DA FATEC - MOGI DAS CRUZES</h2>
+
+    <div id="produtos">
+
+    </div>
+    <!--produtos-->
+
+    <h2>FATEC - MOGI DAS CRUZES</h2>
+
+    <div id="carrinho">
+
+    </div>
+    <!--carrinho-->
+
+    <script>
+        const items = [
+            {
+        
+                nome: 'Pré-matrícula aberta: de 20 de julho até 31 de julho.',
+                img: 'foto1.JPG',
+            },
+
+        
+            {
+                nome: 'Pré-matrícula aberta: de 20 de julho até 31 de julho.',
+                img: '',
+            },
+
+            {
+                nome: 'Pré-matrícula aberta: de 20 de julho até 31 de julho.',
+                img: '',
+            },
+
+            {
+                nome: 'Pré-matrícula aberta: de 20 de julho até 31 de julho.',
+                img: '',
+            },
+        ]
+
+        inicializarloja = () => {
+            var containerProdutos = document.getElementById('produtos');
+            items.map((val) => {
+                containerProdutos.innerHTML += `
+
+                <div class = "produto-single">
+                        <img src="`+ val.img + `" />
+                        <p>`+ val.nome + `</p>
+                    
+                    </div>
+                `;
+            })
+
+        }
+
+        inicializarloja();
+
+        atualizarcarrinho = () => {
+            var containerCarrinho = document.getElementById('carrinho');
+            containerCarrinho.innerHTML = "";
+            items.map((val) => {
+                if (val.quantidade > 0) {
+                    containerCarrinho.innerHTML += `
+                
+                <p>`+ val.nome + ` | quantidade: ` + val.quantidade + `</p>
+                <hr>
+
+                `;
+                }
+            })
+        }
+
+
+        var links = document.getElementsByTagName('a');
+
+        for (var i = 0; i < links.lenght; i++) {
+            links[i].addEventListener("click", function () {
+                let key = this.getAttribute('key');
+                items[key].quantidade++;
+                atualizarcarrinho();
+                return false;
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>
+
